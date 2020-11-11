@@ -1,0 +1,104 @@
+﻿<Page x:Name="printPersonsPage"
+	  x:Class="PPUI.PrintPersonsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PPUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450"
+	  d:DesignWidth="800"
+      Title="PrintPersonsPage"
+	  WindowTitle="Biblioteka-Menu-Osoby"
+	  WindowHeight="500"
+	  WindowWidth="810">
+
+    <Grid>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition MinWidth="20" />
+			<ColumnDefinition Width="auto" />
+			<ColumnDefinition MinWidth="10" />
+			<ColumnDefinition Width="auto" />
+			<ColumnDefinition MinWidth="10" />
+			<ColumnDefinition Width="auto" />
+			<ColumnDefinition MinWidth="20" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition MinHeight="20" />
+			<RowDefinition Height="auto" />
+			<RowDefinition MinHeight="10" />
+			<RowDefinition Height="auto" />
+			<RowDefinition MinHeight="10" />
+			<RowDefinition Height="auto" />
+			<RowDefinition MinHeight="20" />
+		</Grid.RowDefinitions>
+
+		<ListBox x:Name="personsListBox"
+				 SelectionMode="Single"
+				 Grid.Column="1"
+				 Grid.Row="3"
+				 MinWidth="250"
+				 Grid.RowSpan="3">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="auto" />
+							<ColumnDefinition MinWidth="2" />
+							<ColumnDefinition Width="auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Text="{Binding Name}" />
+						<TextBlock Text="{Binding LastName}"
+								   Grid.Column="2" />
+					</Grid>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+
+		<Label x:Name="personsLabel"
+			   Content="Przejrzyj osoby"
+			   Grid.Row="1"
+			   FontSize="36"
+			   FontWeight="Bold"
+			   Grid.ColumnSpan="5"
+			   HorizontalContentAlignment="Center"
+			   VerticalContentAlignment="Center"
+			   Grid.Column="1" />
+
+		<Button x:Name="printPersonButton"
+				Content="Wyświetl szczegóły"
+				Grid.Row="3"
+				Grid.Column="3"
+				Width="160"
+				Height="50"
+				Click="PrintPersonButtonClick" />
+
+		<Button x:Name="addPersonButton"
+				Content="Dodaj osobę"
+				Grid.Row="3"
+				Grid.Column="5"
+				Width="160"
+				Height="50"
+				Click="AddPersonButtonClick" />
+
+		<Button x:Name="deletePersonButton"
+				Content="Usuń osobę"
+				Grid.Row="5"
+				Grid.Column="5"
+				Width="160"
+				Height="50"
+				Click="DeletePersonButtonClick" />
+
+		<Button x:Name="cancelButton"
+				Content="Anuluj"
+				Grid.Row="5"
+				Grid.Column="3"
+				Width="160"
+				Height="50"
+				Click="CancelButtonClick" />
+
+	</Grid>
+</Page>

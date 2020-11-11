@@ -1,0 +1,140 @@
+﻿<Page x:Name="rentalPage"
+	  x:Class="PPUI.RentalPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:local="clr-namespace:PPUI"
+	  mc:Ignorable="d" 
+	  d:DesignHeight="450"
+	  d:DesignWidth="800"
+	  Title="RentalPage"
+	  WindowTitle="Biblioteka-Wypożyczalnia"
+	  WindowHeight="500"
+	  WindowWidth="810">
+
+	<Grid>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition MinWidth="20" />
+			<ColumnDefinition Width="auto" />
+			<ColumnDefinition MinWidth="10" />
+			<ColumnDefinition Width="auto" />
+			<ColumnDefinition MinWidth="10" />
+			<ColumnDefinition Width="auto" />
+			<ColumnDefinition MinWidth="20" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition MinHeight="20" />
+			<RowDefinition Height="auto" />
+			<RowDefinition MinHeight="10" />
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+			<RowDefinition MinHeight="10" />
+			<RowDefinition Height="auto" />
+			<RowDefinition MinHeight="20" />
+		</Grid.RowDefinitions>
+
+		<Label x:Name="rentalLabel"
+			   Content="Wypożycz lub oddaj książkę"
+			   FontSize="36"
+			   FontWeight="Bold"
+			   HorizontalContentAlignment="Center"
+			   VerticalContentAlignment="Center"
+			   Grid.Column="1"
+			   Grid.ColumnSpan="5"
+			   Grid.Row="1" />
+
+		<Label x:Name="personsLabel"
+			   Content="Wybierz osobę:"
+			   Grid.Column="1"
+			   Grid.Row="3" />
+		<ListBox x:Name="personsListBox"
+				 SelectionMode="Single"
+				 MinWidth="150"
+				 MinHeight="150"
+				 Grid.Column="1"
+				 Grid.Row="4"
+				 SelectionChanged="PersonsListBoxSelectionChanged">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="auto" />
+							<ColumnDefinition MinWidth="2" />
+							<ColumnDefinition Width="auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Text="{Binding Name}" />
+						<TextBlock Text="{Binding LastName}"
+								   Grid.Column="2" />
+					</Grid>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<Label x:Name="borrowedBooksLabel"
+			   Content="Wybierz wypożyczoną książkę:"
+			   Grid.Column="3"
+			   Grid.Row="3"
+			   IsEnabled="False" />
+		<ListBox x:Name="borrowedBooksListBox"
+				 SelectionMode="Single"
+				 MinWidth="150"
+				 MinHeight="150"
+				 Grid.Column="3"
+				 Grid.Row="4"
+				 IsEnabled="False">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Title}" />
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<Label x:Name="booksLabel"
+			   Content="Wybierz książkę:"
+			   Grid.Column="5"
+			   Grid.Row="3"
+			   IsEnabled="False" />
+		<ListBox x:Name="booksListBox"
+				 SelectionMode="Single"
+				 MinWidth="150"
+				 MinHeight="150"
+				 Grid.Column="5"
+				 Grid.Row="4"
+				 IsEnabled="False">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Title}" />
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<Button x:Name="borrowBookButton"
+				Content="Wypożycz"
+				Width="160"
+				Height="50"
+				Grid.Column="5"
+				Grid.Row="6"
+				IsEnabled="False"
+				Click="BorrowBookButtonClick"/>
+		
+		<Button x:Name="giveBackBookButton"
+				Content="Oddaj"
+				Width="160"
+				Height="50"
+				Grid.Column="3"
+				Grid.Row="6"
+				IsEnabled="False"
+				Click="GiveBackBookButtonClick"/>
+
+		<Button x:Name="cancelButton"
+				Content="Zakończ"
+				Grid.Row="6"
+				Grid.Column="1"
+				Width="160"
+				Height="50"
+				Click="CancelButtonClick" />
+	</Grid>
+</Page>
